@@ -66,8 +66,8 @@ st.markdown("""
 
     /* Password History Items */
     .history-item {
-        font-size: 1.4em !important;
-        font-weight: bold;
+        font-size: 1.1em !important;
+        font-weight: medium;
         color: white;
         margin-bottom: 10px;
         background-color: #444;
@@ -115,7 +115,9 @@ def check_password_strength(password):
             score += 1
     
     strength_levels = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"]
-    return strength_levels[score]
+    
+    # Ensure the score does not go out of index bounds
+    return strength_levels[min(score, len(strength_levels) - 1)]
 
 # Function to generate a strong password
 def generate_strong_password():
